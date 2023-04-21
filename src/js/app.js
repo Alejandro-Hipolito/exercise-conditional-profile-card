@@ -1,3 +1,4 @@
+import { name } from "file-loader";
 import "../style/index.css";
 
 /**
@@ -33,14 +34,35 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${variables.name != null ? variables.name : "Tu nombre"} ${
+    variables.lastname != null ? variables.lastname : "Tu apellido"
+  }</h1>
+          <h2>${variables.role != null ? variables.role : "Mi rol es..."}</h2>
+          <h3>${variables.city != null ? variables.city : "Mi ciudad es..."} , 
+          ${
+            variables.country != null ? variables.country : "Tu país es..."
+          }</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href="${
+              variables.twitter != null
+                ? "https://twitter.com/" + variables.twitter
+                : "https://twitter.com/home"
+            }"><i class="fab fa-twitter"></i></a></li>
+             <li><a href="${
+               variables.github != null
+                 ? "https://github.com/" + variables.github
+                 : "https://github.com/"
+             }"><i class="fab fa-github"></i></a></li>
+            <li><a href="${
+              variables.linkedin != null
+                ? "https://www.linkedin.com" + "/in/" + variables.linkedin
+                : "https://www.linkedin.com/feed/"
+            }"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="${
+              variables.instagram != null
+                ? "https://www.instagram.com/" + variables.instagram
+                : "https://www.instagram.com/"
+            }"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
